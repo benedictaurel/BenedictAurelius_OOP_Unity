@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] Animator animator;
+    AudioSource audioSource;
 
     void Awake()
     {
         animator.enabled = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     IEnumerator LoadSceneAsync(string sceneName)
@@ -28,11 +30,13 @@ public class LevelManager : MonoBehaviour
     {
         StartCoroutine(LoadSceneAsync(sceneName));
         animator.enabled = true;
+        audioSource.Play();
         animator.SetTrigger("endTransition");
     }
 
     public void OnTransitionEnd()
     {
         animator.enabled = false;
+        audioSource.Stop();
     }
 }
