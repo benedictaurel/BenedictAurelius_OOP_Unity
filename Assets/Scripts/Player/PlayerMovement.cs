@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveVelocity;
     Vector2 moveFriction;
     Vector2 stopFriction;
+    Vector2 ppos;
     Rigidbody2D rb;
 
     void Start() {
@@ -25,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public void Move() {
         moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))) {
-            rb.velocity = Vector2.zero;
-            return;
-        }
+        // if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))) {
+        //     rb.velocity = Vector2.zero;
+        //     return;
+        // }
 
         moveVelocity -= GetFriction() * Time.deltaTime;
 
@@ -48,9 +50,13 @@ public class PlayerMovement : MonoBehaviour
             moveVelocity.y != 0 ? moveFriction.y : stopFriction.y
         );
     }
-
-    void MoveBound() {
-        // Kosong
+    public void MoveBound() {
+        ppos = Camera.main.WorldToViewportPoint(transform.position);
+        ppos.x = Mathf.Clamp(ppos.x, 0.0f, 1.0f);
+        ppos.y = Mathf.Clamp(ppos.y, 0.0f, 0.95f);
+        Vector3 newPosition = Camera.main.ViewportToWorldPoint(ppos);
+        newPosition.z = transform.position.z;
+        transform.position = newPosition;
     }
 
     public bool IsMoving() {
