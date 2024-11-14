@@ -15,13 +15,13 @@ public class WeaponPickup : MonoBehaviour
     }
 
     void Start() {
-        audioSource.Stop();
         if (weapon != null) {
             TurnVisual(false, weapon);
         }
         weapon.transform.SetParent(transform, false);
         weapon.transform.localPosition = transform.position;
         weapon.parentTransform = transform;
+        audioSource.Stop();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
