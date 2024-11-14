@@ -7,11 +7,15 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] Weapon weaponHolder;
     Weapon weapon;
 
+    AudioSource audioSource;
+
     void Awake() {
         weapon = Instantiate(weaponHolder);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start() {
+        audioSource.Stop();
         if (weapon != null) {
             TurnVisual(false, weapon);
         }
@@ -39,11 +43,13 @@ public class WeaponPickup : MonoBehaviour
 
     void TurnVisual(bool on)
     {
+        audioSource.Play();
         weapon.gameObject.SetActive(on);
     }
 
     void TurnVisual(bool on, Weapon weapon)
     {
+        audioSource.Play();
         weapon.gameObject.SetActive(on);
     }
 }
