@@ -6,10 +6,12 @@ public class HealthComponent : MonoBehaviour
 {
     public int maxHealth = 100;
     int health;
+    CombatManager combatManager;
 
     void Start()
     {
         health = maxHealth;
+        combatManager = FindObjectOfType<CombatManager>();
     }
 
     public int getHealth() {
@@ -21,6 +23,7 @@ public class HealthComponent : MonoBehaviour
 
         if (this.health <= 0) {
             Destroy(gameObject);
+            combatManager.OnEnemyKilled();
         }
     }
 }

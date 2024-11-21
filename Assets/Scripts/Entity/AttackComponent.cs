@@ -11,7 +11,6 @@ public class AttackComponent : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(gameObject.tag)) {
-            Debug.Log(gameObject.tag + " hit " + other.tag);
             return;
         }
 
@@ -22,7 +21,7 @@ public class AttackComponent : MonoBehaviour
             return;
 
         if (bullet != null) {
-            hitbox.Damage(bullet.damage);
+            hitbox.Damage(bullet);
         } else {
             hitbox.Damage(damage);
         }

@@ -22,10 +22,12 @@ public class Portal : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Weapon>() != null) {
             GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<Collider2D>().enabled = true;
             transform.position = Vector2.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
             transform.Rotate(0, 0, 90.0f * Time.deltaTime * rotateSpeed);
         } else {
             GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 

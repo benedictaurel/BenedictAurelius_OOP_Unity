@@ -166,7 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841e5652f9ade2e4e81b76a22fb8e07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 4
+  level: 3
+  enemyKilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3023853277633366106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b922836b04dc24b82d2a1897bcae07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
 --- !u!114 &6000489854734471659
 MonoBehaviour:
   m_ObjectHideFlags: 0

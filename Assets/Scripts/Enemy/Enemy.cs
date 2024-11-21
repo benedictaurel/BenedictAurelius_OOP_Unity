@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int level = 0;
+    [SerializeField] protected int level;
+    public UnityEvent enemyKilledEvent;
 
-    public int getLevel(){
+    private void Start() {
+        enemyKilledEvent ??= new UnityEvent();
+    }
+
+    public int GetLevel(){
         return level;
     }
 
-    public void setLevel(int level){
+    public void SetLevel(int level){
         this.level = level;
     }
 
@@ -19,7 +25,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 
-    void Levels() {
-        // level
+    private void OnDestroy() {
+        enemyKilledEvent.Invoke();
     }
 }

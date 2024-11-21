@@ -165,7 +165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da420c4e25d03334f80f1fd9fa7f8321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
+  enemyKilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-2003217294392245683
 MonoBehaviour:
   m_ObjectHideFlags: 0

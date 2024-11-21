@@ -575,7 +575,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 768438ac04035a34f8b2fcac13e49dc6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1399,6 +1399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyKilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1150511705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4269214360432228436, guid: 9f49a70251b668641be6d85c83c559e4, type: 3}

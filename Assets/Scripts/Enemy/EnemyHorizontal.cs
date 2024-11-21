@@ -10,12 +10,11 @@ public class EnemyHorizontal : Enemy
 
     void Start()
     {
-        setLevel(1);
-
+        SetLevel(1);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         float spawnX = Random.Range(0, 2) == 0 ? -screenBounds.x - 1 : screenBounds.x + 1;
-        float spawnY = Random.Range(-screenBounds.y, screenBounds.y);
+        float spawnY = Random.Range(-screenBounds.y + 1, screenBounds.y - 1);
 
         transform.position = new Vector2(spawnX, spawnY);
 

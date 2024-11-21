@@ -10,8 +10,7 @@ public class EnemyBoss : Enemy
 
     void Start()
     {
-        setLevel(4);
-
+        SetLevel(3);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         float spawnX = Random.Range(0, 2) == 0 ? -screenBounds.x - 1 : screenBounds.x + 1;
