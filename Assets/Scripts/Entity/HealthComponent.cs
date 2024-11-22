@@ -23,7 +23,10 @@ public class HealthComponent : MonoBehaviour
 
         if (this.health <= 0) {
             Destroy(gameObject);
-            combatManager.OnEnemyKilled();
+
+            if (gameObject.CompareTag("Enemy")) {
+                combatManager.OnEnemyKilled();
+            }
         }
     }
 }
