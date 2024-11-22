@@ -62,8 +62,8 @@ public class EnemySpawner : MonoBehaviour
         if (totalKill >= minimumKillsToIncreaseSpawnCount)
         {
             totalKill = 0;
-            spawnCountMultiplier *= multiplierIncreaseCount;
-            spawnCount = defaultSpawnCount + spawnCountMultiplier;
+            spawnCountMultiplier += multiplierIncreaseCount;
+            spawnCount = defaultSpawnCount * spawnCountMultiplier;
         }
     }
 }
