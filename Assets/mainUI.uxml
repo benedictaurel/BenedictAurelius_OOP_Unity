@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="Health: 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Health" style="color: rgb(255, 255, 255); -unity-text-align: upper-left;" />
+        <ui:Label tabindex="-1" text="Points: 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Points" style="color: rgb(255, 255, 255);" />
+        <ui:Label tabindex="-1" text="Wave: 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Wave" style="color: rgb(255, 255, 255); -unity-text-align: upper-right; translate: 0 -65px;" />
+        <ui:Label tabindex="-1" text="Enemies Left: 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Enemies-Left" style="color: rgb(255, 255, 255); -unity-text-align: upper-right; translate: 0 -65px;" />
+    </ui:VisualElement>
+</ui:UXML>

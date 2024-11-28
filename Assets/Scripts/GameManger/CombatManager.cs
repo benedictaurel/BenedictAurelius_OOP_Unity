@@ -7,10 +7,12 @@ public class CombatManager : MonoBehaviour
     [SerializeField] float waveInterval = 5f;
     public int waveNumber = 0;
     public int totalEnemies = 0;
+    StatsMenu stats;
 
     private void Start()
     {
         waveNumber = 0;
+        stats = FindObjectOfType<StatsMenu>();
     }
 
     private void Update()
@@ -29,6 +31,7 @@ public class CombatManager : MonoBehaviour
         totalEnemies = 0;
         timer = 0;
         waveNumber++;
+        stats.UpdateWave(waveNumber);
         
         foreach (var spawner in enemySpawners)
         {
@@ -39,5 +42,6 @@ public class CombatManager : MonoBehaviour
     public void OnEnemyKilled()
     {
         totalEnemies--;
+        stats.UpdateEnemiesLeft(totalEnemies);
     }
 }

@@ -17,18 +17,29 @@ public class EnemySpawner : MonoBehaviour
     public int multiplierIncreaseCount = 1;
     public CombatManager combatManager;
     public bool isSpawning = false;
+    StatsMenu stats;
 
     public void Start()
     {
         spawnCount = defaultSpawnCount;
+        stats = FindObjectOfType<StatsMenu>();
     }
 
     public void StartSpawning()
     {
+        bool isFirstCall = true;
         int currentWaveLevel = (combatManager.waveNumber - 1) % 3 + 1;
         if (spawnedEnemy.GetLevel() <= currentWaveLevel)
         {
             isSpawning = true;
+            combatManager.totalEnemies += spawnCount;
+
+            if (isFirstCall)
+            {
+                stats.UpdateEnemiesLeft(combatManager.totalEnemies);
+                isFirstCall = false;
+            }
+
             StartCoroutine(SpawnRoutine());
         }
     }
@@ -42,11 +53,11 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnRoutine()
     {
         int currentSpawnCount = 0;
-        while (isSpawning && currentSpawnCount < spawnCount) {
+        int totalSpawnCount = spawnCount;
+        while (isSpawning && currentSpawnCount < totalSpawnCount) {
+            currentSpawnCount++;
             Enemy enemy = Instantiate(spawnedEnemy, transform.position, Quaternion.identity);
             enemy.enemyKilledEvent.AddListener(OnEnemyKilled);
-            combatManager.totalEnemies++;
-            currentSpawnCount++;
 
             yield return new WaitForSeconds(spawnInterval);
         }
